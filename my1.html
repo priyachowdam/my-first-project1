@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Myntra Clone</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Assistant, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        /* Header Navigation */
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 50px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ff3f6c;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #282c3f;
+            font-weight: 700;
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+
+        nav ul li a:hover {
+            color: #ff3f6c;
+        }
+
+        .search-bar {
+            width: 35%;
+            position: relative;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 10px 40px;
+            background: #f5f5f6;
+            border: 1px solid #f5f5f6;
+            border-radius: 4px;
+            color: #696e79;
+            outline: none;
+        }
+
+        .actions {
+            display: flex;
+            gap: 25px;
+            color: #282c3f;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .action-item {
+            text-align: center;
+            cursor: pointer;
+        }
+
+        /* Categories Section */
+        .categories-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            padding: 30px 10px;
+            background: #fff;
+        }
+
+        .cat-item {
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .cat-circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: #f5f5f6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 8px;
+            border: 2px solid #ff3f6c;
+        }
+
+        .cat-item p {
+            font-size: 14px;
+            font-weight: 600;
+            color: #282c3f;
+        }
+
+        /* Promo Banner Section */
+        .promo-banner {
+            width: 90%;
+            margin: 20px auto;
+            background: linear-gradient(135deg, #fe517c 0%, #ff8c7b 100%);
+            border-radius: 8px;
+            padding: 40px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .promo-text h2 {
+            font-size: 32px;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+
+        .promo-text p {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+
+        .promo-btn {
+            background: white;
+            color: #ff3f6c;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+
+        /* Product Grid Section */
+        .products-section {
+            width: 90%;
+            margin: 40px auto;
+        }
+
+        .sections-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: #3e4152;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 25px;
+        }
+
+        .product-card {
+            background: white;
+            border: 1px solid #eea8b84d;
+            border-radius: 6px;
+            overflow: hidden;
+            transition: transform 0.2s;
+            cursor: pointer;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .product-img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            object-position: top;
+            display: block;
+        }
+
+        .product-info {
+            padding: 12px;
+        }
+
+        .brand-name {
+            font-size: 14px;
+            font-weight: 700;
+            color: #282c3f;
+            margin-bottom: 4px;
+        }
+
+        .product-name {
+            font-size: 13px;
+            color: #535766;
+            margin-bottom: 6px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .price-container {
+            font-size: 14px;
+        }
+
+        .discount-price {
+            font-weight: 700;
+            color: #282c3f;
+        }
+
+        .original-price {
+            text-decoration: line-through;
+            color: #7e818c;
+            margin-left: 5px;
+            font-size: 12px;
+        }
+
+        .discount-percentage {
+            color: #ff905a;
+            font-weight: 600;
+            margin-left: 5px;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Myntra</div>
+        <nav>
+            <ul>
+                <li><a href="#">Men</a></li>
+                <li><a href="#">Women</a></li>
+                <li><a href="#">Kids</a></li>
+                <li><a href="#">Home & Living</a></li>
+                <li><a href="#">Beauty</a></li>
+            </ul>
+        </nav>
+        <div class="search-bar">
+            <input type="text" placeholder="Search for products, brands and more">
+        </div>
+        <div class="actions">
+            <div class="action-item">👤 Profile</div>
+            <div class="action-item">❤️ Wishlist</div>
+            <div class="action-item">👜 Bag</div>
+        </div>
+    </header>
+
+    <div class="categories-container">
+        <div class="cat-item">
+            <div class="cat-circle">👕</div>
+            <p>Top Offers</p>
+        </div>
+        <div class="cat-item">
+            <div class="cat-circle">👗</div>
+            <p>Ethnic Wear</p>
+        </div>
+        <div class="cat-item">
+            <div class="cat-circle">👟</div>
+            <p>Footwear</p>
+        </div>
+        <div class="cat-item">
+            <div class="cat-circle">💄</div>
+            <p>Beauty</p>
+        </div>
+        <div class="cat-item">
+            <div class="cat-circle">⌚</div>
+            <p>Watches</p>
+        </div>
+        <div class="cat-item">
+            <div class="cat-circle">🎒</div>
+            <p>Gadgets</p>
+        </div>
+    </div>
+
+    <div class="promo-banner">
+        <div class="promo-text">
+            <h2>Grand Fashion Festival</h2>
+            <p>Flat 50% - 80% OFF on Top Brands</p>
+        </div>
+        <button class="promo-btn">Shop Now</button>
+    </div>
+
+    <div class="products-section">
+        <h3 class="sections-title">Trending Styles</h3>
+        <div class="product-grid">
+            
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=500" alt="Men Casual Cotton Shirt" class="product-img">
+                <div class="product-info">
+                    <div class="brand-name">Roadster</div>
+                    <div class="product-name">Men Casual Cotton Shirt</div>
+                    <div class="price-container">
+                        <span class="discount-price">₹699</span>
+                        <span class="original-price">₹1399</span>
+                        <span class="discount-percentage">(50% OFF)</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500" alt="Men Eazy Active Sneakers" class="product-img">
+                <div class="product-info">
+                    <div class="brand-name">HRX by Hrithik Roshan</div>
+                    <div class="product-name">Men Eazy Active Sneakers</div>
+                    <div class="price-container">
+                        <span class="discount-price">₹1499</span>
+                        <span class="original-price">₹2999</span>
+                        <span class="discount-percentage">(50% OFF)</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/25134374/2023/9/23/936ccdfc-e069-4e76-80db-eb4f4e70e30a1695454659556AnoukWomenBurgundyOrnamentalPrintedKurtawithTrousersDupa1.jpg" alt="Women Printed Kurta Sets" class="product-img">
+                <div class="product-info">
+                    <div class="brand-name">Anouk</div>
+                    <div class="product-name">Women Printed Kurta Sets</div>
+                    <div class="price-container">
+                        <span class="discount-price">₹899</span>
+                        <span class="original-price">₹2499</span>
+                        <span class="discount-percentage">(64% OFF)</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=500" alt="Unisex Solid Backpack" class="product-img">
+                <div class="product-info">
+                    <div class="brand-name">Puma</div>
+                    <div class="product-name">Unisex Solid Backpack</div>
+                    <div class="price-container">
+                        <span class="discount-price">₹999</span>
+                        <span class="original-price">₹1999</span>
+                        <span class="discount-percentage">(50% OFF)</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
