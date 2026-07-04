@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>My Mobile App</title>
+    <style>
+        /* Mobile Screen Styles */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Top Header App Bar */
+        .app-header {
+            background-color: #6200ee;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        /* Main Content View Port */
+        .app-content {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            text-align: center;
+        }
+
+        .welcome-card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            margin-top: 20px;
+        }
+
+        .action-btn {
+            background-color: #03dac6;
+            color: #000;
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 25px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+            box-shadow: 0 3px 5px rgba(0,0,0,0.2);
+        }
+
+        /* Bottom Tab Navigation Bar */
+        .bottom-nav {
+            background-color: white;
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .nav-item {
+            font-size: 12px;
+            color: #757575;
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .nav-item.active {
+            color: #6200ee;
+            font-weight: bold;
+        }
+
+        .nav-icon {
+            font-size: 20px;
+            margin-bottom: 2px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <div class="app-header" id="header-title">Home Screen</div>
+
+    <!-- Content Screen area -->
+    <div class="app-content">
+        <div class="welcome-card">
+            <h2 id="hero-text">Hello User! 👋</h2>
+            <p>Idhi Capacitor use chesi build chesina mobile native view framework layout.</p>
+            <button class="action-btn" onclick="triggerNativeFeature()">Click Mobile Feature</button>
+        </div>
+    </div>
+
+    <!-- Mobile Tabs -->
+    <div class="bottom-nav">
+        <button class="nav-item active" onclick="switchTab('Home')">
+            <span class="nav-icon">🏠</span>Home
+        </button>
+        <button class="nav-item" onclick="switchTab('Profile')">
+            <span class="nav-icon">👤</span>Profile
+        </button>
+        <button class="nav-item" onclick="switchTab('Settings')">
+            <span class="nav-icon">⚙️</span>Settings
+        </button>
+    </div>
+
+    <!-- JS Logic -->
+    <script>
+        function switchTab(tabName) {
+            // Header text ni dynamical ga marchadam
+            document.getElementById('header-title').innerText = tabName + " Screen";
+            document.getElementById('hero-text').innerText = "Welcome to " + tabName + "! 🚀";
+            
+            // Active tab styling logic
+            const tabs = document.querySelectorAll('.nav-item');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            // Click chesina active tab highlighting color modal marusthundhi
+            event.currentTarget.classList.add('active');
+        }
+
+        function triggerNativeFeature() {
+            alert("Mobile app trigger successfully! Mobile alert boxes ready! 📱");
+        }
+    </script>
+</body>
+</html>

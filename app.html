@@ -1,0 +1,140 @@
+import 'package:flutter/material.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+
+void main() {
+  runApp(KidsVideoApp());
+}
+
+class KidsVideoApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Kids Fun TV',
+      theme: ThemeData(
+        primarySwatch: Colors.pink,
+        scaffoldBackgroundColor: Colors.amber[50], // Kids friendly bright background
+      ),
+      home: VideoListScreen(),
+    );
+  }
+}
+
+// 1. Video List Screen
+class VideoListScreen extends StatelessWidget {
+  // Sample Kids Videos (YouTube IDs)
+  final List<Map<String, String>> videoList = [
+    {"title": "Rhymes & Songs", "id": "dQw4w9WgXcQ", "color": "0xFFFF6B6B"},
+    {"title": "Cartoon Stories", "id": "kJQP7kiw5Fk", "color": "0xFF4D96FF"},
+    {"title": "Learn ABC & 123", "id": "9bZkp7q19f0", "color": "0xFF6BCB77"},
+    {"title": "Animal World", "id": "XYZ12345678", "color": "0xFFFFD93D"},
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('🎈 Kids Fun TV 🎈', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+        backgroundColor: Colors.pinkAccent,
+        centerTitle: true,
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(12.0),
+        child: GridView.builder(
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2, // 2 columns dashboard
+            crossAxisSpacing: 12,
+            mainAxisSpacing: 12,
+          ),
+          itemCount: videoList.length,
+          itemBuilder: (context, index) {
+            var video = videoList[index];
+            return InkWell(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => VideoPlayerScreen(videoId: video['id']!, title: video['title']!),
+                  ),
+                );
+              },
+              child: Card(
+                color: Color(int.parse(video['color']!)),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                elevation: 5,
+                child: Center(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    // Pedda text mariyu play icon pillala kosam
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.play_circle_fill, size: 50, color: Colors.white),
+                        SizedBox(height: 10),
+                        Text(
+                          video['title']!,
+                          textAlign: TextAlign.center,
+                          style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            );
+          },
+        ),
+      ),
+    );
+  }
+}
+
+// 2. Video Player Screen
+class VideoPlayerScreen extends StatefulWidget {
+  final String videoId;
+  final String title;
+
+  VideoPlayerScreen({required this.videoId, required this.title});
+
+  @override
+  _VideoPlayerScreenState createState() => _VideoPlayerScreenState();
+}
+
+class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
+  late YoutubePlayerController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = YoutubePlayerController(
+      initialVideoId: widget.videoId,
+      flags: YoutubePlayerFlags(
+        autoPlay: true,
+        mute: false,
+        disableDragSeek: true, // Pillalu forward/backward cheyakunda strict control
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.title),
+        backgroundColor: Colors.pinkAccent,
+      ),
+      body: Center(
+        child: YoutubePlayer(
+          controller: _controller,
+          showVideoProgressIndicator: true,
+          progressIndicatorColor: Colors.pink,
+        ),
+      ),
+    );
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+}

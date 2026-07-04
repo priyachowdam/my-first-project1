@@ -1,0 +1,157 @@
+<!Doctype html>
+<html lang="te">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=devise-width,initial-scale=1.0">
+<title>Amazon clone</title>
+<style>
+/*Amazon theme CSS styling */
+body{
+font-family:Arial,sans-serif;
+margin:0;
+padding:0;
+background-color:#eaeded;
+}
+/*Amazon navbar*/
+.navbar{
+background-color:#131921;
+color:white;
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:10px 20px;
+}
+.logo{
+font-size:24px;
+font-weight:bold;
+color:#febd69;
+}
+.search-bar{
+flex-grow:1;
+margin:0 20px;
+display:flex;
+}
+.search-bar input{
+width:100%;
+padding:8px;
+border:none;
+border-radius:4px 0 0 4px;
+}
+.search-bar button{
+background-color:#febd69;
+border-radius:0 4px 4px 0;
+cursor:pointer;
+}
+.cart-box{
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+}
+#cart-count{
+background-color:#f08804;
+color:white;
+padding:2px 8px;
+border-radius:50%;
+font-size:14px;
+}
+/*product section */
+.container{
+max-width:1200px;
+margin:30px auto;
+padding:0 20px;
+}
+.product-grid{
+display:grid;
+grid-template-column:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+.product-card{
+background-color:white;
+padding:20px;
+border-radius:8px;
+box-shadow:0 2px 4px rgba(0,0,0,0.1);
+text-align:center;
+}
+.product-card img{
+max-width:100%;
+height:180px;
+object-fit:contain;
+}
+.product-title{
+font-size:16px;
+font-weight:bold;
+margin:10px 0;
+height:40px;
+overflow:hidden;
+}
+.product-price{
+color:#!b12704;
+font-size:18px;
+font-weight:bold;
+margin-bottom:15px;
+}
+.add-to-cart-btn{
+background-color:#ffd814;
+border:1px solid#fcd200;
+border-radius:20px;
+padding:8px 16px;
+cursor:pointer;
+width:100%;
+font-weight:bold;
+transition:0.2s;
+}
+.add-to-card-btn:hover{
+background-color:#f7ca00;
+}
+</style>
+</head>
+<body>
+<div class="navbar">
+<div class="logo">amazon.in</div>
+<div class="search-bar">
+<input type="text"placeholder="search Amazon.in">
+<button>🔍</button>
+</div>
+<div class="cart-box">
+🛒cart:<span id="cart-count">0</span>
+</div>
+</div>
+<div class="container">
+<h2>trending offers</h2>
+<div class="product-grid">
+<div class="product-card">
+<img src="https://images-na.ssl-images-amazon.com/images/I/71vFKBpKakl._AC_SL1500_.jpg" alt="iphone">
+<div class="product-title">iphone 15 pro(128GB)-natural titanium</div>
+<div class="product-price">₹1,20,900</div>
+<button class="add-to-cart-btn"onclick="addtocart()">Add To Cart</button>
+</div>
+<div class="product-card">
+<img src="https://images-na.ssl-images-amazon.com/images/I/61MpU44D-FL._AC_SL1500_.jpg"alt="laptop">
+<div class="product-title">HP laptop core i5 13th Gen(16GB/512GB SSD)</div>
+<div class="product-price">₹54,990</div>
+<button class="add-to-cart-btn"onclick="addtocart()">Add To Cart</button>
+</div>
+<div class="product-card">
+<img src="https://images-na.ssl-images-amazon.com/images/I/61A1D9+gSFL._AC_SL1000_.jpg"alt="smartwatch">
+<div class="product-title">noise colorfit pulse smartwatch(full touch display)</div>
+<div class="product-price">₹1,499</div>
+<button class="add-to-cart-btn"onclick="addtocart()">Add To Cart</button>
+</div>
+</div>
+</div>
+<script>
+//cart count initially 0
+let currentcount=0;
+//when the cart button is click
+function addtocart(){
+//incrementing the count by 1
+currentcount++;
+//we are updating the text inside the HTML by id="cart-count"
+document.getElementaryById('cart-count'_.innertext=currentcount;
+//showing an alert with user
+alert("item successfully added to your Amazon cart🛒");
+}
+</script>
+</body>
+</html>
+
+
