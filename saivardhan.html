@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hospital Layout</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      text-align: center;
+    }
+    h1 {
+      color: #2c3e50;
+    }
+    .floor {
+      margin: 20px auto;
+      padding: 10px;
+      width: 80%;
+      border: 2px solid #2c3e50;
+      border-radius: 10px;
+      background-color: #ecf0f1;
+    }
+    .room {
+      display: inline-block;
+      width: 150px;
+      height: 80px;
+      margin: 10px;
+      border-radius: 8px;
+      color: #000;
+      font-weight: bold;
+      line-height: 80px;
+    }
+    .ground { background-color: #a8dadc; }
+    .first { background-color: #f4a261; }
+    .second { background-color: #e9c46a; }
+    img {
+      width: 300px;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>🏥 Sri Venkateswara Hospital Layout</h1>
+
+  <!-- Hospital Image -->
+  <img src="hospital_building.jpg" alt="Hospital Building">
+
+  <!-- Ground Floor -->
+  <div class="floor">
+    <h2>Ground Floor</h2>
+    <div class="room ground">Emergency Ward</div>
+    <div class="room ground">Reception</div>
+    <div class="room ground">Pharmacy</div>
+  </div>
+
+  <!-- First Floor -->
+  <div class="floor">
+    <h2>First Floor</h2>
+    <div class="room first">ICU</div>
+    <div class="room first">Operation Theatre</div>
+  </div>
+
+  <!-- Second Floor -->
+  <div class="floor">
+    <h2>Second Floor</h2>
+    <div class="room second">General Ward</div>
+    <div class="room second">Outpatient Dept.</div>
+  </div>
+</body>
+</html>
