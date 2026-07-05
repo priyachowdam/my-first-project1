@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meesho Clone</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f8f9fa;
+    }
+    header {
+      background-color: #e91e63;
+      color: white;
+      padding: 15px;
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+    }
+    .products {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 20px;
+    }
+    .card {
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      width: 200px;
+      margin: 10px;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .card img {
+      width: 100%;
+      height: 220px; /* Images clear ga kanapadadaniki height koncham penchanu */
+      object-fit: cover;
+      border-bottom: 1px solid #ddd;
+    }
+    .card h3 {
+      font-size: 16px;
+      margin: 10px 0 5px 0;
+    }
+    .card p {
+      color: #555;
+      font-size: 14px;
+      margin: 0 0 10px 0;
+      font-weight: bold;
+    }
+    .card button {
+      background-color: #e91e63;
+      color: white;
+      border: none;
+      padding: 10px;
+      width: 100%;
+      cursor: pointer;
+      border-radius: 0 0 8px 8px;
+      font-size: 14px;
+    }
+    .card button:hover {
+      background-color: #c2185b;
+    }
+  </style>
+</head>
+<body>
+
+  <header>Meesho Clone</header>
+
+  <div class="products">
+    <div class="card">
+      <img src="https://images.unsplash.com/photo👗-1610030469983-98e550d6193c?w=400&auto=format&fit=crop&q=60" alt="Kurti">
+      <h3>Kurti</h3>
+      <p>₹499</p>
+      <button>Add to Cart</button>
+    </div>
+    
+    <div class="card">
+      <img src="https://images.unsplash.com/photo🥻-1610030469668-9253339a91a8?w=400&auto=format&fit=crop&q=60" alt="Saree">
+      <h3>Saree</h3>
+      <p>₹999</p>
+      <button>Add to Cart</button>
+    </div>
+    
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=400&auto=format&fit=crop&q=60" alt="Handbag">
+      <h3>Handbag</h3>
+      <p>₹799</p>
+      <button>Add to Cart</button>
+    </div>
+  </div>
+
+</body>
+</html>
