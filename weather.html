@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weather Based Crop Advisory System</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f4f8f4;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        width: 500px;
+        margin: 50px auto;
+        background: white;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+
+    h1 {
+        text-align: center;
+        color: green;
+    }
+
+    label {
+        font-weight: bold;
+    }
+
+    input, select {
+        width: 100%;
+        padding: 10px;
+        margin: 8px 0 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    button {
+        width: 100%;
+        padding: 12px;
+        background: green;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    button:hover {
+        background: darkgreen;
+    }
+
+    #result {
+        margin-top: 20px;
+        padding: 15px;
+        border-radius: 5px;
+        background: #e8f5e9;
+        display: none;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Weather Based Crop Advisory</h1>
+
+    <label>Location</label>
+    <input type="text" id="location" placeholder="Enter Location">
+
+    <label>Crop Name</label>
+    <select id="crop">
+        <option value="Rice">Rice</option>
+        <option value="Wheat">Wheat</option>
+        <option value="Cotton">Cotton</option>
+        <option value="Maize">Maize</option>
+    </select>
+
+    <label>Temperature (°C)</label>
+    <input type="number" id="temp" placeholder="Enter Temperature">
+
+    <label>Rainfall (mm)</label>
+    <input type="number" id="rainfall" placeholder="Enter Rainfall">
+
+    <button onclick="getAdvisory()">Get Advisory</button>
+
+    <div id="result"></div>
+</div>
+
+<script>
+function getAdvisory() {
+
+    let crop = document.getElementById("crop").value;
+    let temp = parseFloat(document.getElementById("temp").value);
+    let rainfall = parseFloat(document.getElementById("rainfall").value);
+
+    let message = "";
+
+    if(crop === "Rice") {
+        if(rainfall > 50)
+            message = "Suitable weather for Rice cultivation. Maintain water level.";
+        else
+            message = "Irrigation is recommended for Rice crop.";
+    }
+
+    else if(crop === "Wheat") {
+        if(temp >= 15 && temp <= 25)
+            message = "Good temperature for Wheat growth.";
+        else
+            message = "Temperature is not ideal for Wheat.";
+    }
+
+    else if(crop === "Cotton") {
+        if(temp > 25)
+            message = "Suitable weather for Cotton cultivation.";
+        else
+            message = "Warm temperature is required for Cotton.";
+    }
+
+    else if(crop === "Maize") {
+        if(rainfall >= 30)
+            message = "Maize crop has sufficient moisture.";
+        else
+            message = "Provide irrigation for Maize crop.";
+    }
+
+    document.getElementById("result").style.display = "block";
+    document.getElementById("result").innerHTML =
+        "<h3>Crop Advisory</h3><p>" + message + "</p>";
+}
+</script>
+
+</body>
+</html>
